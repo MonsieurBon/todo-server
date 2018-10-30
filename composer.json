@@ -1,0 +1,20 @@
+{
+    "name": "monsieurbon/tiny-skeleton",
+    "description": "A Tiny skeleton project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabian Gut",
+            "email": "fabian.gut@ethy.ch"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "monsieurbon/tiny": "^1.0"
+    }
+}
