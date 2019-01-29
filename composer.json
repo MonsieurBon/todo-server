@@ -1,6 +1,6 @@
 {
-    "name": "monsieurbon/tiny-skeleton",
-    "description": "A Tiny skeleton project",
+    "name": "monsieurbon/todo-server",
+    "description": "Backend for a CQRS todo app",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -11,10 +11,19 @@
     ],
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "Todo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Todo\\Tests\\": "tests/"
         }
     },
     "require": {
+        "php": "^7.2",
         "monsieurbon/tiny": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
     }
 }
