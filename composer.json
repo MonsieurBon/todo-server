@@ -24,6 +24,6 @@
         "monsieurbon/tiny": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^8.0"
     }
 }

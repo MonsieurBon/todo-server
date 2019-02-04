@@ -2,3 +2,4 @@
 vendor
 var
 coverage.xml
+.phpunit.result.cache
