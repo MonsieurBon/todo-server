@@ -21,7 +21,8 @@
     },
     "require": {
         "php": "^7.2",
-        "monsieurbon/tiny": "^1.0"
+        "monsieurbon/tiny": "^1.0",
+        "ramsey/uuid": "^3.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
