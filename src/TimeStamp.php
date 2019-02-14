@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Todo;
 
+use Assert\Assertion;
+
 class TimeStamp
 {
     /** @var int */
@@ -26,8 +28,6 @@ class TimeStamp
 
     public static function fromString(string $timestamp): TimeStamp
     {
-        if (preg_match('/^-?[0-9]+$/', $timestamp)) {
-            return new static((int) $timestamp);
-        }
+        return new static((int) $timestamp);
     }
 }

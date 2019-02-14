@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Todo\Events;
-
-use Todo\Uuid;
+namespace Todo;
 
 class MetaData
 {
@@ -17,8 +15,13 @@ class MetaData
     /** @var Uuid */
     private $correlationId;
 
-    public static function fromCause(): MetaData
+    private function __construct()
     {
-        return static();
+        $this->timestamp = TimeStamp::now();
+    }
+
+    public static function create(): self
+    {
+        return new static();
     }
 }
