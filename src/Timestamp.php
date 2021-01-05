@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Todo;
 
-use Assert\Assertion;
-
-class TimeStamp
+class Timestamp
 {
     /** @var int */
     private $timestamp;
@@ -16,7 +14,7 @@ class TimeStamp
         $this->timestamp = $timestamp;
     }
 
-    public static function now(): TimeStamp
+    public static function now(): Timestamp
     {
         return new static(time());
     }
@@ -26,7 +24,7 @@ class TimeStamp
         return (string)$this->timestamp;
     }
 
-    public static function fromString(string $timestamp): TimeStamp
+    public static function fromString(string $timestamp): Timestamp
     {
         return new static((int) $timestamp);
     }

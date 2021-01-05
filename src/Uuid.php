@@ -4,15 +4,26 @@ declare(strict_types=1);
 
 namespace Todo;
 
+use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface;
 
-abstract class Uuid implements ValueObject
+class Uuid implements ValueObject
 {
     private $uuid;
 
-    protected function __construct(UuidInterface $uuid)
+    private function __construct(UuidInterface $uuid)
     {
         $this->uuid = $uuid;
+    }
+
+    public static function fromString(string $uuid): Uuid
+    {
+        return new static(RamseyUuid::fromString($uuid));
+    }
+
+    public static function generate(): Uuid
+    {
+        return new static(RamseyUuid::uuid4());
     }
 
     public function toString(): string
@@ -22,7 +33,10 @@ abstract class Uuid implements ValueObject
 
     public function equals(ValueObject $other): bool
     {
-        /** @var Uuid $other */
+        if (!$other instanceof Uuid) {
+            return false;
+        }
+
         return $this->uuid->equals($other->uuid);
     }
 }

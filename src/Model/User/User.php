@@ -6,10 +6,11 @@ namespace Todo\Model\User;
 
 use Todo\AggregateRoot;
 use Todo\Events\UserWasRegistered;
+use Todo\Uuid;
 
 class User extends AggregateRoot
 {
-    /** @var UserId */
+    /** @var Uuid */
     private $userId;
 
     /** @var UserName */
@@ -18,7 +19,7 @@ class User extends AggregateRoot
     /** @var EmailAddress */
     private $emailAddress;
 
-    public static function registerWithData(UserId $userId, UserName $userName, EmailAddress $emailAddress)
+    public static function registerWithData(Uuid $userId, UserName $userName, EmailAddress $emailAddress)
     {
         $self = new self();
 
@@ -27,7 +28,7 @@ class User extends AggregateRoot
         return $self;
     }
 
-    public function userId(): UserId
+    public function userId(): Uuid
     {
         return $this->userId;
     }
@@ -38,5 +39,10 @@ class User extends AggregateRoot
         $this->userId = $event->userId();
         $this->userName = $event->userName();
         $this->emailAddress = $event->emailAddress();
+    }
+
+    protected function aggregateId(): Uuid
+    {
+        return $this->userId;
     }
 }

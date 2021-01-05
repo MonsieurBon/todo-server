@@ -10,13 +10,13 @@ abstract class DomainMessage
     /** @var Uuid */
     private $id;
 
-    /** @var MetaData */
+    /** @var Metadata */
     private $metadata;
 
     protected function __construct(Uuid $id)
     {
         $this->id = $id;
-        $this->metadata = MetaData::create();
+        $this->metadata = Metadata::create();
     }
 
     public function id(): Uuid
@@ -24,7 +24,7 @@ abstract class DomainMessage
         return $this->id;
     }
 
-    public function metadata(): MetaData
+    public function metadata(): Metadata
     {
         return $this->metadata;
     }

@@ -10,6 +10,8 @@ abstract class AggregateRoot
 {
     private $recordedEvents = [];
 
+    protected abstract function aggregateId(): Uuid;
+
     protected function recordThat(Event $event): void
     {
         $this->recordedEvents[] = $event;
@@ -34,5 +36,13 @@ abstract class AggregateRoot
     protected function determineEventHandlerMethod(Event $event): string
     {
         return 'when' . ucfirst($event->name()->toString());
+    }
+
+    protected function popRecordedEvents(): array
+    {
+        $recordedEvents = $this->recordedEvents;
+        $this->recordedEvents = [];
+
+        return $recordedEvents;
     }
 }

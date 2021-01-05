@@ -1,17 +1,20 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Tiny\App;
+use Todo\Command\CommandRequestHandler;
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$containerBuilder = new \DI\ContainerBuilder();
+$containerBuilder->addDefinitions(__DIR__ . '/../config/container.php');
+$container = $containerBuilder->build();
 
 $app = new App();
 
-$app->get("/hello[/{name}]", function(Request $request) {
-    $name = $request->get('name', 'World');
-
-    return new Response(sprintf('Hello %s', htmlspecialchars($name, ENT_QUOTES, 'UTF-8')));
+$app->post("/api/command", function (Request $request) use ($container) {
+    $handler = $container->get(CommandRequestHandler::class);
+    return $handler->handle($request);
 });
 
 $app->run();

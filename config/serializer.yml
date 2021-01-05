@@ -1,0 +1,26 @@
+Todo\Command\RegisterUser:
+  id:
+    type: 'Todo\Uuid'
+    factoryMethod: 'fromString'
+  userId:
+    type: 'Todo\Uuid'
+    factoryMethod: 'fromString'
+  userName:
+    type: 'Todo\Model\User\UserName'
+    factoryMethod: 'fromString'
+  emailAddress:
+    type: 'Todo\Model\User\EmailAddress'
+    factoryMethod: 'fromString'
+  metadata: 'Todo\Metadata'
+Todo\Metadata:
+  timestamp:
+    type: 'Todo\Timestamp'
+    factoryMethod: 'fromString'
+  causationId:
+    type: 'Todo\Uuid'
+    factoryMethod: 'fromString'
+  correlationId:
+    type: 'Todo\Uuid'
+    factoryMethod: 'fromString'
+
+

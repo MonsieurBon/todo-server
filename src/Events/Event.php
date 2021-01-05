@@ -20,7 +20,7 @@ abstract class Event extends DomainMessage
 
     private function __construct(Uuid $aggregateId, array $payload)
     {
-        parent::__construct(EventId::generate());
+        parent::__construct(Uuid::generate());
         $this->name = EventName::fromString((new \ReflectionClass($this))->getShortName());
         $this->aggregateId = $aggregateId;
         $this->payload = $payload;

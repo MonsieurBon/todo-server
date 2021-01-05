@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Todo\Events;
 
+use Todo\Uuid;
 use Todo\Model\User\EmailAddress;
-use Todo\Model\User\UserId;
 use Todo\Model\User\UserName;
 
 class UserWasRegistered extends Event
@@ -13,7 +13,7 @@ class UserWasRegistered extends Event
     private static $USERNAME = 'username';
     private static $EMAIL_ADDRESS = 'email_address';
 
-    /** @var UserId */
+    /** @var Uuid */
     private $userId;
 
     /** @var UserName */
@@ -22,7 +22,7 @@ class UserWasRegistered extends Event
     /** @var EmailAddress */
     private $emailAddress;
 
-    public static function withData(UserId $userId, UserName $userName, EmailAddress $emailAddress): self
+    public static function withData(Uuid $userId, UserName $userName, EmailAddress $emailAddress): self
     {
         /** @var self $event */
         $event = self::occur($userId, [
@@ -37,7 +37,7 @@ class UserWasRegistered extends Event
         return $event;
     }
 
-    public function userId(): UserId
+    public function userId(): Uuid
     {
         if ($this->userId === null) {
             $this->userId = $this->aggregateId();
